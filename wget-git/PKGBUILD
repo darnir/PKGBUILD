@@ -2,7 +2,7 @@
 
 _gitname=wget
 pkgname=$_gitname-git
-pkgver=v1.16.114.gce088c2
+pkgver=1.16.1.r1.g71425f1
 pkgrel=1
 pkgdesc="A network utility to retrieve files from the Web"
 arch=('i686' 'x86_64')
@@ -45,7 +45,7 @@ package() {
 pkgver() {
   cd $_gitname
   #Use the tag from the last commit.
-  git describe --always | sed 's|-|.|g'
+  git describe --always | sed 's/^v//; s/-/.r/; s/-/./g'
 }
 
 # vim:set ts=2 sw=2 tw=0 et:
