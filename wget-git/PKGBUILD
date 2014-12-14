@@ -24,7 +24,7 @@ build() {
   git submodule init
   git config submodule.gnulib.url "$srcdir/gnulib"
   ./bootstrap
-  ./configure --prefix=/usr --without-included-regex --enable-nls --enable-threads=posix --enable-dependency-tracking --with-ssl=gnutls --sysconfdir=/etc
+  ./configure --prefix=/usr --without-included-regex --enable-nls --enable-dependency-tracking --with-ssl=gnutls --sysconfdir=/etc
   make
 }
 
