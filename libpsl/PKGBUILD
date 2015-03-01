@@ -1,17 +1,16 @@
 # Maintainer: Darshit Shah <darnir@gmail.com>
 pkgname=libpsl
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A Publix Suffic List library"
 arch=('i386' 'x86_64')
 url="https://github.com/rockdaboot/libpsl"
 license=('MIT')
 depends=('icu')
-source=("https://github.com/rockdaboot/libpsl/archive/${pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/rockdaboot/libpsl/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
 
 build() {
-  cd "$srcdir/$pkgname-$pkgname-$pkgver"
-  ./autogen.sh
+  cd "$srcdir/$pkgname-$pkgver"
   ./configure \
     --prefix=/usr \
     --disable-static \
@@ -22,13 +21,13 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
 
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" \
+  install -m644 "${srcdir}/${pkgname}-${pkgver}/COPYING" \
     "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
 # vim: ts=2:sw=2:et
-md5sums=('e89029fd4e8e43c752736e573f7a7626')
+md5sums=('775d12ff0a3e8684200c2149be74d58e')
